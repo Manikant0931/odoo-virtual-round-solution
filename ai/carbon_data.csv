@@ -1,0 +1,11 @@
+Department,Month,Activity,Energy_Used,Production,Carbon_Emission
+HR,January,Office,200,0,50
+IT,January,Server,800,0,300
+Finance,January,Office,300,0,80
+Marketing,January,Travel,400,0,120
+Manufacturing,January,Production,1500,500,700
+HR,February,Office,220,0,55
+IT,February,Server,850,0,320
+Finance,February,Office,310,0,85
+Marketing,February,Travel,450,0,130
+Manufacturing,February,Production,1600,550,750
