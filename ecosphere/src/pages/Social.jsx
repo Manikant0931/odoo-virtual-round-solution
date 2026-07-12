@@ -1,7 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, PieChart, Pie, Cell, Legend } from "recharts";
 import { Check, X, FileWarning, CalendarDays } from "lucide-react";
 import { useEsg } from "../context/EsgContext";
-import { csrActivities, diversityMetrics, employees, currentUser } from "../data/mockData";
+import { csrActivities, diversityMetrics, employees } from "../data/mockData";
 import { Card, SectionHeading, Pill, Button, statusTone, ProgressBar } from "../components/ui";
 
 const empName = (id) => employees.find((e) => e.id === id)?.name ?? id;
@@ -9,6 +9,7 @@ const GENDER_COLORS = ["#D06B58", "#5A6FC0", "#E3A855"];
 
 export default function Social() {
   const { state, approveParticipation, registerCsr } = useEsg();
+  const authUserId = state.auth?.userId;
 
   return (
     <div className="space-y-6 animate-rise">
@@ -20,7 +21,7 @@ export default function Social() {
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {csrActivities.map((a) => {
-          const myReg = state.employeeParticipation.some((p) => p.activity === a.id && p.employee === currentUser.id);
+          const myReg = authUserId && state.employeeParticipation.some((p) => p.activity === a.id && p.employee === authUserId);
           const full = a.registered >= a.capacity;
           return (
             <Card key={a.id} className="p-5">
@@ -39,8 +40,8 @@ export default function Social() {
               <Button
                 variant={myReg ? "outline" : "moss"}
                 className="mt-4 w-full"
-                disabled={myReg || full}
-                onClick={() => registerCsr(a.id, currentUser.id)}
+                disabled={myReg || full || !authUserId}
+                onClick={() => registerCsr(a.id, authUserId)}
               >
                 {myReg ? "You're registered" : full ? "Full" : "Register interest"}
               </Button>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Check, X, Footprints, Leaf, HeartHandshake, Trophy, Gift, Crown } from "lucide-react";
 import { useEsg } from "../context/EsgContext";
-import { badges, employees, currentUser, departments } from "../data/mockData";
+import { badges, employees, departments } from "../data/mockData";
 import { Card, SectionHeading, Pill, Button, statusTone, ProgressBar } from "../components/ui";
 
 const empName = (id) => employees.find((e) => e.id === id)?.name ?? id;
@@ -14,6 +14,8 @@ const LIFECYCLE = ["Draft", "Active", "Under Review", "Completed", "Archived"];
 export default function Gamification() {
   const { state, setChallengeStatus, approveChallenge, joinChallenge, redeemReward } = useEsg();
   const [tab, setTab] = useState("challenges");
+  const authUserId = state.auth?.userId;
+  const currentUser = state.employees.find((e) => e.id === authUserId) ?? null;
 
   const leaderboard = [...state.employees].sort((a, b) => b.xp - a.xp);
 
@@ -48,7 +50,7 @@ export default function Gamification() {
         <div className="space-y-6">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {state.challenges.map((c) => {
-              const joined = state.challengeParticipation.some((p) => p.challenge === c.id && p.employee === currentUser.id);
+              const joined = authUserId && state.challengeParticipation.some((p) => p.challenge === c.id && p.employee === authUserId);
               return (
                 <Card key={c.id} className="p-5">
                   <div className="flex items-start justify-between gap-2">
@@ -67,7 +69,7 @@ export default function Gamification() {
 
                   <div className="mt-4 flex items-center gap-2">
                     {c.status === "Active" && (
-                      <Button variant={joined ? "outline" : "moss"} disabled={joined} onClick={() => joinChallenge(c.id, currentUser.id)} className="flex-1 !py-1.5 text-xs">
+                      <Button variant={joined ? "outline" : "moss"} disabled={joined || !authUserId} onClick={() => joinChallenge(c.id, authUserId)} className="flex-1 !py-1.5 text-xs">
                         {joined ? "Joined" : "Join challenge"}
                       </Button>
                     )}
@@ -157,13 +159,13 @@ export default function Gamification() {
       {tab === "rewards" && (
         <div>
           <div className="mb-4 flex items-center justify-between rounded-xl bg-violet-500/10 px-4 py-3">
-            <p className="text-sm text-violet-700">Redeeming as <strong>{currentUser.name}</strong></p>
-            <p className="font-mono text-sm font-semibold text-violet-700">{state.employees.find((e) => e.id === currentUser.id)?.points} points available</p>
+            <p className="text-sm text-violet-700">Redeeming as <strong>{currentUser?.name ?? "Your account"}</strong></p>
+            <p className="font-mono text-sm font-semibold text-violet-700">{currentUser ? `${currentUser.points} points available` : "Sign in to redeem"}</p>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {state.rewards.map((r) => {
-              const you = state.employees.find((e) => e.id === currentUser.id);
-              const canRedeem = r.stock > 0 && you.points >= r.pointsRequired;
+              const you = currentUser;
+              const canRedeem = r.stock > 0 && you && you.points >= r.pointsRequired;
               return (
                 <Card key={r.id} className="p-5">
                   <div className="flex h-11 w-11 items-center justify-center rounded-full bg-amber-500/10 text-amber-600">
@@ -171,8 +173,8 @@ export default function Gamification() {
                   </div>
                   <p className="mt-3 text-sm font-semibold text-ink-900">{r.name}</p>
                   <p className="mt-1 font-mono text-xs text-ink-600">{r.pointsRequired} pts · {r.stock} in stock</p>
-                  <Button variant={canRedeem ? "moss" : "outline"} disabled={!canRedeem} className="mt-3 w-full !py-1.5 text-xs" onClick={() => redeemReward(r.id, currentUser.id)}>
-                    {r.stock <= 0 ? "Out of stock" : you.points < r.pointsRequired ? "Not enough points" : "Redeem"}
+                  <Button variant={canRedeem ? "moss" : "outline"} disabled={!canRedeem} className="mt-3 w-full !py-1.5 text-xs" onClick={() => redeemReward(r.id, authUserId)}>
+                    {r.stock <= 0 ? "Out of stock" : !you ? "Sign in to redeem" : you.points < r.pointsRequired ? "Not enough points" : "Redeem"}
                   </Button>
                 </Card>
               );

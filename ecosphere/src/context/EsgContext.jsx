@@ -25,6 +25,9 @@ const initialState = {
     badgeAutoAward: true,
     weights: { ...seed.scoreWeights },
   },
+  auth: {
+    userId: null,
+  },
 };
 
 function pushNotification(state, notif) {
@@ -260,6 +263,17 @@ function reducer(state, action) {
       return { ...state, notifications: state.notifications.map((n) => ({ ...n, read: true })) };
     }
 
+    case "LOGIN": {
+      if (!action.employeeId) return state;
+      const user = state.employees.find((e) => e.id === action.employeeId);
+      if (!user) return state;
+      return { ...state, auth: { userId: user.id } };
+    }
+
+    case "LOGOUT": {
+      return { ...state, auth: { userId: null } };
+    }
+
     default:
       return state;
   }
@@ -287,6 +301,8 @@ export function EsgProvider({ children }) {
       toggleSetting: (key) => dispatch({ type: "TOGGLE_SETTING", key }),
       setWeights: (weights) => dispatch({ type: "SET_WEIGHTS", weights }),
       markNotificationsRead: () => dispatch({ type: "MARK_NOTIFICATIONS_READ" }),
+      login: (employeeId) => dispatch({ type: "LOGIN", employeeId }),
+      logout: () => dispatch({ type: "LOGOUT" }),
     }),
     []
   );
