@@ -144,7 +144,7 @@ $$\text{ESG Score} = (\text{Environmental} \times 0.40) + (\text{Social} \times 
 
 **Example Output:**
 
-![Department-wise ESG Scores](images/image-1783877321399.png)
+![Department-wise ESG Scores](images/Department%20wise%20ESG%20score%20ai.jpeg)
 ```
 Department     Environmental  Social  Governance  ESG Score
 HR                    80        75         90       81.5
@@ -156,7 +156,7 @@ Manufacturing         75        68         78       73.8
 
 ### Analytics Report
 
-![ESG Analytics Output](images/image-1783877347194.png)
+![ESG Analytics Output](images/ESG%20Analytics%20ai.jpeg)
 
 ```
 Average ESG Score: 81.92
@@ -180,7 +180,7 @@ Machine Learning model for predicting future carbon emissions based on energy us
 **Features:** Energy_Used, Production  
 **Target:** Carbon_Emission  
 
-![Carbon Prediction Model Performance](images/image-1783877369950.png)
+![Carbon Prediction Model Performance](images/Carbon%20Emission%20prediction%20ai.jpeg)
 
 ```
 Mean Absolute Error: 11.13 kg CO₂
@@ -194,7 +194,7 @@ Predicted Carbon Emission: 846.56 kg CO₂
 
 Detailed breakdown of emissions by department and activity.
 
-![Carbon Emission Report](images/image-1783877272779.png)
+![Carbon Emission Report](images/Carbon%20Emission%20report%20ai.jpeg)
 
 ```
 Total Carbon Emission: 2590 kg CO₂
@@ -226,7 +226,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ### Login & Authentication
 
-![EcoSphere Demo Login](images/image-1783877250946.png)
+![EcoSphere Demo Login](images/login.png)
 
 - Employee-based authentication (no persistent backend)
 - Dropdown to select any employee from the organization
@@ -234,7 +234,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ### Dashboard — Overall ESG Score
 
-![ESG Performance Dashboard](images/image-1783877199689.png)
+![ESG Performance Dashboard](images/Dashboard%20%20%20ESG%20performance%20Dashboard.png)
 
 **Real-Time Metrics:**
 - **Overall ESG Score Ring Visual** — Concentric circles showing Environmental, Social, Governance breakdown
@@ -253,7 +253,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Environmental Module — Carbon Accounting
 
-![Carbon & Sustainability Page](images/image-1783877182254.png)
+![Carbon & Sustainability Page](images/Environmental%20%20%20%20%20Carbon%20and%20Sustainablilty.png)
 
 **Features:**
 
@@ -286,7 +286,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Social Module — CSR & Employee Engagement
 
-![CSR & Employee Engagement Page](images/image-1783877301789.png)
+![CSR & Employee Engagement Page](images/Social%20%20%20%20CSR%20and%20Employee%20Engagement.png)
 
 **Features:**
 
@@ -318,7 +318,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Governance Module — Policies, Audits & Compliance
 
-![Policies, Audits & Compliance Page](images/image-1783877088917.png)
+![Policies, Audits & Compliance Page](images/Governance%20%20%20Policies%20%2CAudits%20and%20Compliences.png)
 
 **Features:**
 
@@ -348,7 +348,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Gamification Module — Challenges, Badges & Rewards
 
-![Challenges, Badges & Rewards Page](images/image-1783877097229.png)
+![Challenges, Badges & Rewards Page](images/Gamification%20%20%20%20Challenges%20Badges%20and%20Rewards.png)
 
 **Features:**
 
@@ -393,7 +393,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Reports Module — Insights & Export
 
-![ESG Reporting Center & Custom Report Builder](images/image-1783877082212.png)
+![ESG Reporting Center & Custom Report Builder](images/Reports%20centre.png)
 
 **Features:**
 
@@ -426,7 +426,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Settings & Administration
 
-![Configuration — Business Rules & Master Data](images/image-1783877070938.jpeg)
+![Configuration — Business Rules & Master Data](images/setting%20configuration.png)
 
 **Features:**
 
