@@ -13,7 +13,6 @@ import {
   X,
 } from "lucide-react";
 import { useEsg } from "../context/EsgContext";
-import { currentUser } from "../data/mockData";
 
 const NAV = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard, accent: "text-ink-900" },
@@ -28,8 +27,9 @@ const NAV = [
 export default function Layout() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
-  const { state, markNotificationsRead } = useEsg();
+  const { state, markNotificationsRead, logout } = useEsg();
   const unread = state.notifications.filter((n) => !n.read).length;
+  const currentUser = state.employees.find((e) => e.id === state.auth?.userId) ?? null;
 
   return (
     <div className="flex min-h-screen bg-paper-50">
@@ -74,7 +74,7 @@ export default function Layout() {
           <div className="min-w-0 flex-1">
             <p className="truncate font-mono text-xs text-ink-600">Virtual Round Demo · FY26 Q3</p>
           </div>
-          <div className="relative">
+          <div className="relative flex items-center gap-2">
             <button
               onClick={() => {
                 setNotifOpen((v) => !v);
@@ -88,6 +88,12 @@ export default function Layout() {
                 <span className="absolute right-1.5 top-1.5 flex h-2 w-2 items-center justify-center rounded-full bg-coral-500" />
               )}
             </button>
+            {currentUser && (
+              <button onClick={logout} className="rounded-full border border-ink-900/10 bg-white px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-900/5">
+                Logout
+              </button>
+            )}
+
             {notifOpen && (
               <div className="absolute right-0 top-11 z-40 w-80 rounded-sig border border-ink-900/[0.06] bg-white p-2 shadow-panel animate-rise">
                 <p className="px-3 py-2 font-mono text-xs uppercase tracking-wide text-ink-600">Notifications</p>
@@ -148,14 +154,20 @@ function SidebarLink({ item, onClick }) {
 }
 
 function UserCard() {
+  const { state } = useEsg();
+  const currentUser = state.employees.find((e) => e.id === state.auth?.userId) ?? null;
+  const initials = currentUser ? currentUser.name.split(" ").map((s) => s[0]).join("") : "ES";
+
   return (
     <div className="mt-4 flex items-center gap-2.5 rounded-xl bg-white/[0.06] px-3 py-2.5">
       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-moss-500 font-display text-xs font-semibold text-white">
-        {currentUser.name.split(" ").map((s) => s[0]).join("")}
+        {initials}
       </div>
       <div className="min-w-0">
-        <p className="truncate text-sm font-medium text-white">{currentUser.name}</p>
-        <p className="truncate font-mono text-[11px] text-paper-100/50">{currentUser.xp} XP · {currentUser.points} pts</p>
+        <p className="truncate text-sm font-medium text-white">{currentUser ? currentUser.name : "Guest"}</p>
+        <p className="truncate font-mono text-[11px] text-paper-100/50">
+          {currentUser ? `${currentUser.xp} XP · ${currentUser.points} pts` : "Please sign in"}
+        </p>
       </div>
     </div>
   );
