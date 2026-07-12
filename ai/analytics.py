@@ -17,3 +17,20 @@ print(f"Score : {lowest['ESG Score']}")
 print("\nDepartment Ranking")
 ranking = data.sort_values(by="ESG Score", ascending=False)
 print(ranking[["Department", "ESG Score"]])
+
+print("\nDepartment Grades")
+for index, row in ranking.iterrows():
+    score = row["ESG Score"]
+
+    if score >= 90:
+        grade = "A+"
+    elif score >= 80:
+        grade = "A"
+    elif score >= 70:
+        grade = "B"
+    elif score >= 60:
+        grade = "C"
+    else:
+        grade = "D"
+
+    print(row["Department"], ":", grade)
