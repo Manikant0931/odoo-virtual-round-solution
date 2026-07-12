@@ -144,7 +144,7 @@ $$\text{ESG Score} = (\text{Environmental} \times 0.40) + (\text{Social} \times 
 
 **Example Output:**
 
-![Department-wise ESG Scores](ai/README.md)
+![Department-wise ESG Scores](images/image-1783877321399.png)
 ```
 Department     Environmental  Social  Governance  ESG Score
 HR                    80        75         90       81.5
@@ -156,7 +156,7 @@ Manufacturing         75        68         78       73.8
 
 ### Analytics Report
 
-![ESG Analytics Output](ai/README.md)
+![ESG Analytics Output](images/image-1783877347194.png)
 
 ```
 Average ESG Score: 81.92
@@ -180,7 +180,7 @@ Machine Learning model for predicting future carbon emissions based on energy us
 **Features:** Energy_Used, Production  
 **Target:** Carbon_Emission  
 
-![Carbon Prediction Model Performance](ai/README.md)
+![Carbon Prediction Model Performance](images/image-1783877369950.png)
 
 ```
 Mean Absolute Error: 11.13 kg CO₂
@@ -194,7 +194,7 @@ Predicted Carbon Emission: 846.56 kg CO₂
 
 Detailed breakdown of emissions by department and activity.
 
-![Carbon Emission Report](ai/README.md)
+![Carbon Emission Report](images/image-1783877272779.png)
 
 ```
 Total Carbon Emission: 2590 kg CO₂
@@ -226,7 +226,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ### Login & Authentication
 
-![EcoSphere Demo Login](ecosphere-login.png)
+![EcoSphere Demo Login](images/image-1783877250946.png)
 
 - Employee-based authentication (no persistent backend)
 - Dropdown to select any employee from the organization
@@ -234,7 +234,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ### Dashboard — Overall ESG Score
 
-![ESG Performance Dashboard](ecosphere-dashboard.png)
+![ESG Performance Dashboard](images/image-1783877199689.png)
 
 **Real-Time Metrics:**
 - **Overall ESG Score Ring Visual** — Concentric circles showing Environmental, Social, Governance breakdown
@@ -253,7 +253,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Environmental Module — Carbon Accounting
 
-![Carbon & Sustainability Page](ecosphere-environmental.png)
+![Carbon & Sustainability Page](images/image-1783877182254.png)
 
 **Features:**
 
@@ -286,7 +286,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Social Module — CSR & Employee Engagement
 
-![CSR & Employee Engagement Page](ecosphere-social.png)
+![CSR & Employee Engagement Page](images/image-1783877301789.png)
 
 **Features:**
 
@@ -318,7 +318,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Governance Module — Policies, Audits & Compliance
 
-![Policies, Audits & Compliance Page](ecosphere-governance.png)
+![Policies, Audits & Compliance Page](images/image-1783877088917.png)
 
 **Features:**
 
@@ -348,7 +348,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Gamification Module — Challenges, Badges & Rewards
 
-![Challenges, Badges & Rewards Page](ecosphere-gamification.png)
+![Challenges, Badges & Rewards Page](images/image-1783877097229.png)
 
 **Features:**
 
@@ -393,7 +393,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Reports Module — Insights & Export
 
-![ESG Reporting Center & Custom Report Builder](ecosphere-reports.png)
+![ESG Reporting Center & Custom Report Builder](images/image-1783877082212.png)
 
 **Features:**
 
@@ -426,7 +426,7 @@ A fully clickable React prototype demonstrating all ESG workflows end-to-end.
 
 ## Settings & Administration
 
-![Configuration — Business Rules & Master Data](ecosphere-settings.png)
+![Configuration — Business Rules & Master Data](images/image-1783877070938.jpeg)
 
 **Features:**
 
