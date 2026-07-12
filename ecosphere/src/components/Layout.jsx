@@ -34,7 +34,7 @@ export default function Layout() {
   return (
     <div className="flex min-h-screen bg-paper-50">
       {/* Sidebar - desktop */}
-      <aside className="hidden w-64 shrink-0 flex-col bg-ink-900 px-4 py-6 text-paper-100 lg:flex">
+      <aside className="hidden w-64 shrink-0 flex-col bg-ink-900 px-4 py-6 text-paper-100 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto lg:flex">
         <Brand />
         <nav className="mt-8 flex flex-1 flex-col gap-1">
           {NAV.map((item) => (
