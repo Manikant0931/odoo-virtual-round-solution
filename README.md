@@ -213,12 +213,6 @@ This repository is currently in its early stage. The core data models, business 
 
 ---
 
-## License
-
-This project is licensed under the MIT License.
-
----
-
 ## Team Error404
 
 This project is built by Team Error404, with a focus on MERN stack web development on the frontend and application side, and data science and AI on the analytics side.
